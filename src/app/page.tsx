@@ -55,7 +55,7 @@ export default function HomePage() {
       
       <Garantias />
       
-      <Escassez />
+      <Escassez onOpenPopup={handleOpenPopup} />
       
       <Investimento onOpenPopup={handleOpenPopup} />
       

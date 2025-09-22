@@ -220,6 +220,124 @@ body {
   @apply outline-none ring-2 ring-primary-500 ring-offset-2;
 }
 
+/* Popup Styles */
+.popup-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+  backdrop-filter: blur(4px);
+}
+
+.popup-container {
+  @apply bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden;
+  animation: popupSlideIn 0.3s ease-out;
+}
+
+.popup-header {
+  @apply flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-primary-100;
+}
+
+.popup-title {
+  @apply text-xl md:text-2xl font-bold text-primary-800 pr-4;
+}
+
+.popup-close {
+  @apply w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 text-gray-600 hover:text-red-500 hover:bg-red-50;
+}
+
+.popup-content {
+  @apply overflow-y-auto max-h-[calc(90vh-120px)] p-6;
+}
+
+.popup-instructions {
+  @apply mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg;
+}
+
+.popup-instructions p {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.popup-form {
+  @apply space-y-6;
+}
+
+.form-group {
+  @apply space-y-2;
+}
+
+.form-label {
+  @apply block text-sm font-semibold text-gray-800;
+}
+
+.required {
+  @apply text-red-500;
+}
+
+.form-input, .form-textarea {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200;
+}
+
+.form-textarea {
+  @apply resize-y min-h-[100px];
+}
+
+.checkbox-group {
+  @apply space-y-3;
+}
+
+.checkbox-item {
+  @apply flex items-start space-x-3;
+}
+
+.checkbox-item input[type="checkbox"] {
+  @apply mt-1 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500;
+}
+
+.checkbox-item label {
+  @apply text-sm text-gray-700 cursor-pointer;
+}
+
+.radio-group {
+  @apply space-y-3;
+}
+
+.radio-item {
+  @apply flex items-start space-x-3;
+}
+
+.radio-item input[type="radio"] {
+  @apply mt-1 w-4 h-4 text-primary-600 border-gray-300 focus:ring-primary-500;
+}
+
+.radio-item label {
+  @apply text-sm text-gray-700 cursor-pointer;
+}
+
+.popup-actions {
+  @apply flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-200;
+}
+
+.btn {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 /* Print styles */
 @media print {
   .no-print {
