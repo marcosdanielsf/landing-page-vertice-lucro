@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vértice do Lucro - Sistema de Vendas Previsíveis</title>
+    <link rel="stylesheet" href="styles-vertice.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">
+                <h2>Vértice do Lucro</h2>
+            </div>
+            <nav class="nav">
+                <a href="#hero">Início</a>
+                <a href="#problema">Problema</a>
+                <a href="#solucao">Solução</a>
+                <a href="#como-funciona">Como Funciona</a>
+                <a href="#prova-social">Resultados</a>
+                <a href="#bonus">Bônus</a>
+            </nav>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="highlight">Cansado de Vendas Imprevisíveis?</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    Implante o Sistema <strong>"Vértice do Lucro"</strong> e Garanta <span class="highlight-number">10-30 Novas Vendas</span> + <span class="highlight-number">10+ Reuniões Mensais</span> para Sua Mentoria em Apenas <strong>90 Dias</strong>.
+                </h2>
+                <p class="hero-description">
+                    Transforme sua expertise em lucro consistente e liberdade, mesmo com tempo e orçamento limitados.
+                </p>
+                <div class="hero-cta">
+                    <a href="#aplicacao" class="cta-button primary pulse">
+                        <i class="fas fa-rocket"></i>
+                        QUERO MINHA MENTORIA COM VENDAS PREVISÍVEIS AGORA!
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="10">0</span>
+                        <span class="stat-label">Vendas Mínimas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="90">0</span>
+                        <span class="stat-label">Dias para Resultado</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">% Previsível</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema Section -->
+    <section class="problema" id="problema">
+        <div class="container">
+            <div class="section-header">
+                <h2>Você Conhece Essa Frustração?</h2>
+                <p>Você é um mentor, consultor ou expert digital com conhecimento valioso, mas suas vendas são um montanha-russa emocional?</p>
+            </div>
+            
+            <div class="problemas-grid">
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-chart-line-down"></i>
+                    </div>
+                    <h3>Faturamento Baixo</h3>
+                    <p>Faturamento abaixo de R$10k/mês ou sem previsibilidade?</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Tempo Perdido</h3>
+                    <p>Perdendo horas com tarefas manuais e follow-ups inconsistentes?</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Dependência de Indicações</h3>
+                    <p>Dependendo do "boca a boca" ou indicações, sem um funil de vendas real?</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-user-slash"></i>
+                    </div>
+                    <h3>Medo de Parecer Amador</h3>
+                    <p>Medo de parecer "amador" ao vender no Instagram e WhatsApp?</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Insegurança com Investimento</h3>
+                    <p>Inseguro sobre como investir seu pouco orçamento em tráfego pago?</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Tudo Fragmentado</h3>
+                    <p>Sentindo que tem "tudo fragmentado": planilhas, DMs soltas e arranjos improvisados?</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Preso na Operação</h3>
+                    <p>Preso na operação, sem tempo para o que realmente importa: escalar e entregar valor?</p>
+                </div>
+            </div>
+            
+            <div class="problema-conclusion">
+                <p>Se você está exausto de trabalhar duro sem resultados previsíveis, você não está sozinho. A maioria dos experts falha em transformar conhecimento em um negócio lucrativo porque <strong>não tem um sistema de vendas</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solução Section -->
+    <section class="solucao" id="solucao">
+        <div class="container">
+            <div class="section-header">
+                <h2>Chega de Amadorismo e Incógnitas.</h2>
+                <h3>Apresentamos o <span class="highlight">"Vértice do Lucro"</span>: O Único Programa Que <strong>IMPLANTA</strong> Um Sistema de Vendas Previsível Para Sua Mentoria em 90 Dias.</h3>
+            </div>
+            
+            <div class="imagine-section">
+                <h3>Imagine...</h3>
+                <div class="imagine-grid">
+                    <div class="imagine-item">
+                        <div class="imagine-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <p>Acordar sabendo <strong>EXATAMENTE</strong> quantas reuniões você tem agendadas para o dia e a semana.</p>
+                    </div>
+                    
+                    <div class="imagine-item">
+                        <div class="imagine-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <p>Ter um funil de vendas digital plug & play funcionando no Instagram e WhatsApp, <strong>24/7</strong>.</p>
+                    </div>
+                    
+                    <div class="imagine-item">
+                        <div class="imagine-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <p>Fechar <strong>10-30 novas vendas</strong> para sua mentoria nos próximos 3 meses.</p>
+                    </div>
+                    
+                    <div class="imagine-item">
+                        <div class="imagine-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <p>Sua agenda preenchida com <strong>10+ reuniões qualificadas</strong> por mês, sem depender de indicações ou "sorte".</p>
+                    </div>
+                    
+                    <div class="imagine-item">
+                        <div class="imagine-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <p>Um CRM totalmente automatizado (Kommo DFY) cuidando dos follow-ups, agendamentos e nutrição, <strong>liberando seu tempo</strong>.</p>
+                    </div>
+                    
+                    <div class="imagine-item">
+                        <div class="imagine-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <p>Vender com <strong>confiança e autoridade</strong>, usando scripts e processos testados que transformam curiosos em clientes pagantes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nao-curso">
+                <div class="nao-curso-content">
+                    <h3>Isso não é um curso. É uma <span class="highlight">IMPLANTAÇÃO PRÁTICA</span> onde construímos com você e para você a estrutura exata que os maiores experts usam para faturar alto.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona Section -->
+    <section class="como-funciona" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <h2>O Que Você Vai Obter com o Vértice do Lucro</h2>
+                <h3>Sua Implantação de 90 Dias</h3>
+                <p>Nosso sistema é entregue em <strong>Sprints de Execução Focada</strong>, garantindo resultados rápidos e tangíveis:</p>
+            </div>
+            
+            <div class="sprints-timeline">
+                <div class="sprint-item">
+                    <div class="sprint-number">0</div>
+                    <div class="sprint-content">
+                        <h3>Sprint 0: Kickoff 72h "Pronto para Vender"</h3>
+                        <div class="sprint-type">DFY (Done For You)</div>
+                        <p><strong>Setup completo do seu Kommo</strong> (funil, WhatsApp, calendário, automações essenciais).</p>
+                        <div class="sprint-resultado">
+                            <strong>RESULTADO:</strong> Funil ativo, automações rodando e seus primeiros contatos disparados em até 72h.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sprint-item">
+                    <div class="sprint-number">1</div>
+                    <div class="sprint-content">
+                        <h3>Sprint 1: Oferta Grand Slam + Pitch Que Fecha</h3>
+                        <div class="sprint-type">DWY (Done With You)</div>
+                        <p><strong>Desenho da sua Oferta Irresistível</strong> e um Pitch de Vendas que converte, com objeções mapeadas.</p>
+                        <div class="sprint-resultado">
+                            <strong>RESULTADO:</strong> Clareza no seu posicionamento e uma oferta que se vende sozinha.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sprint-item">
+                    <div class="sprint-number">2</div>
+                    <div class="sprint-content">
+                        <h3>Sprint 2: Funil IG/WhatsApp Plug & Play</h3>
+                        <div class="sprint-type">DWY (Done With You)</div>
+                        <p><strong>Playbooks de conteúdo orgânico</strong>, roteiros de qualificação e processos para agendamentos.</p>
+                        <div class="sprint-resultado">
+                            <strong>RESULTADO:</strong> Baseline de 10 reuniões/mês garantido, usando os canais que seus clientes já estão.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sprint-item">
+                    <div class="sprint-number">3</div>
+                    <div class="sprint-content">
+                        <h3>Sprint 3: Rotina Comercial & Follow-up Que Não Falha</h3>
+                        <div class="sprint-type">DWY (Done With You)</div>
+                        <p><strong>Cadência diária de prospecção</strong>, pipeline hygiene e automações de follow-up e reativação.</p>
+                        <div class="sprint-resultado">
+                            <strong>RESULTADO:</strong> Previsibilidade de vendas com um dashboard de métricas claras.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sprint-item">
+                    <div class="sprint-number">4</div>
+                    <div class="sprint-content">
+                        <h3>Sprint 4: Conversão e Fechamento de Alto Nível</h3>
+                        <div class="sprint-type">DWY (Done With You)</div>
+                        <p><strong>Roleplays semanais</strong>, gravações comentadas e um "closing checklist" para você fechar mais vendas com confiança.</p>
+                        <div class="sprint-resultado">
+                            <strong>RESULTADO:</strong> Maestria nas chamadas de vendas, transformando mais reuniões em clientes.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sprint-item">
+                    <div class="sprint-number">5</div>
+                    <div class="sprint-content">
+                        <h3>Sprint 5: Escala Leve (R$20/dia) + Parcerias</h3>
+                        <div class="sprint-type">DWY (Done With You)</div>
+                        <p><strong>Estratégias de tráfego pago de baixo risco</strong> e playbook de indicações para dobrar seu dealflow.</p>
+                        <div class="sprint-resultado">
+                            <strong>RESULTADO:</strong> Dobre suas oportunidades de vendas com baixo investimento e parcerias estratégicas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="acompanhamento">
+                <h3>Acompanhamento e Suporte Premium:</h3>
+                <div class="suporte-grid">
+                    <div class="suporte-item">
+                        <i class="fas fa-user-tie"></i>
+                        <p><strong>Mentoria 1:1 quinzenal</strong> com um especialista dedicado.</p>
+                    </div>
+                    <div class="suporte-item">
+                        <i class="fas fa-users"></i>
+                        <p><strong>Mentoria em grupo semanal</strong> para superação de desafios e networking.</p>
+                    </div>
+                    <div class="suporte-item">
+                        <i class="fas fa-whatsapp"></i>
+                        <p><strong>Suporte prioritário via WhatsApp</strong> (respostas em até 24h úteis) para você nunca ficar travado.</p>
+                    </div>
+                    <div class="suporte-item">
+                        <i class="fas fa-video"></i>
+                        <p><strong>Revisões assíncronas</strong> de seus materiais (pitch, mensagens, gravações de call).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prova Social Section -->
+    <section class="prova-social" id="prova-social">
+        <div class="container">
+            <div class="section-header">
+                <h2>Veja o Que Nossos Clientes Já Conquistaram:</h2>
+            </div>
+            
+            <div class="depoimentos-grid">
+                <div class="depoimento">
+                    <div class="depoimento-content">
+                        <p>"Antes do Vértice do Lucro, eu dependia de indicações e vivia a cada mês com a incerteza. Em 60 dias, implementamos um funil que me gerou <strong>15 vendas e 20 reuniões</strong>. É um game changer!"</p>
+                    </div>
+                    <div class="depoimento-autor">
+                        <div class="autor-foto">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="autor-info">
+                            <h4>Carlos Silva</h4>
+                            <span>Mentor de Negócios Digitais</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="depoimento">
+                    <div class="depoimento-content">
+                        <p>"Eu tinha medo de parecer amador vendendo no DM. O Vértice do Lucro me deu os scripts e o processo. Hoje, fecho clientes pelo Instagram com confiança e <strong>meu faturamento triplicou</strong>."</p>
+                    </div>
+                    <div class="depoimento-autor">
+                        <div class="autor-foto">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="autor-info">
+                            <h4>Ana Costa</h4>
+                            <span>Consultora de Marketing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="depoimento">
+                    <div class="depoimento-content">
+                        <p>"Estava perdendo tempo com planilhas e follow-ups manuais. Com o sistema do Vértice do Lucro, <strong>automatizei tudo e dobrei minha produtividade</strong>. Agora tenho tempo para focar no que realmente importa."</p>
+                    </div>
+                    <div class="depoimento-autor">
+                        <div class="autor-foto">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="autor-info">
+                            <h4>Roberto Mendes</h4>
+                            <span>Coach Executivo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Bônus -->
+    <section id="bonus" class="bonus-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Bônus Exclusivos Que Aceleram Seus Resultados</h2>
+                <p>Mais de <strong>R$ 19.500</strong> em valor adicional para garantir seu sucesso</p>
+            </div>
+            <div class="bonus-grid">
+                <div class="bonus-item">
+                    <div class="bonus-icon">⚡</div>
+                    <div class="bonus-value">R$ 3.000</div>
+                    <h3>BÔNUS #1: O ACELERADOR "10 REUNIÕES EM 10 DIAS"</h3>
+                    <p><strong>Benefício:</strong> Elimine a espera e comece a agendar suas primeiras 10 reuniões de vendas em menos de 2 semanas, usando 25 prompts de conteúdo, 7 DMs de resposta rápida e 3 roteiros de Stories/Lives prontos para copiar e colar.</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">💬</div>
+                    <div class="bonus-value">R$ 2.500</div>
+                    <h3>BÔNUS #2: 30 SCRIPTS DE WHATSAPP E INSTAGRAM (COPIAR E COLAR)</h3>
+                    <p><strong>Benefício:</strong> Abordagens frias, mornas, quentes, no-show, follow-up de proposta e reativação. Nunca mais fique sem saber o que dizer para fechar a venda.</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">📋</div>
+                    <div class="bonus-value">R$ 4.000</div>
+                    <h3>BÔNUS #3: BIBLIOTECA "OFERTA NA MÃO": TEMPLATES VALIDADOS</h3>
+                    <p><strong>Benefício:</strong> Construa sua oferta em minutos, não meses. Acesso a templates de página/checkout de alta conversão, decks de oferta persuasivos, uma matriz de garantias "anti-falha" e comparativos de mercado para se diferenciar instantaneamente.</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">📱</div>
+                    <div class="bonus-value">R$ 2.000</div>
+                    <h3>BÔNUS #4: AUDITORIA DE PERFIL IG + ROTEIRO DE HIGHLIGHTS QUE VENDE</h3>
+                    <p><strong>Benefício:</strong> Transforme seu perfil do Instagram em uma máquina de vendas com um checklist de credibilidade e social proof express que capta a atenção e gera desejo.</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">⭐</div>
+                    <div class="bonus-value">R$ 1.500</div>
+                    <h3>BÔNUS #5: PROVA SOCIAL EXPRESS: KIT DE CAPTAÇÃO E USO</h3>
+                    <p><strong>Benefício:</strong> Aprenda a captar depoimentos poderosos e modelos de cases que provam seu valor e aceleram a decisão de compra dos seus leads.</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">🎯</div>
+                    <div class="bonus-value">R$ 3.000</div>
+                    <h3>BÔNUS #6: TRÁFEGO DE BAIXO ORÇAMENTO (R$20/DIA) - GUIA DE INÍCIO RÁPIDO</h3>
+                    <p><strong>Benefício:</strong> Ative campanhas de tráfego pago de forma segura e lucrativa, mesmo com um orçamento limitado. Receba setups prontos, criativos validados e um checklist de risco para evitar perdas e acelerar seus leads.</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">🚀</div>
+                    <div class="bonus-value">R$ 1.500</div>
+                    <h3>BÔNUS #7: ANTI-PROCRASTINAÇÃO E EXECUÇÃO: SISTEMA SEMANAL DE SPRINTS</h3>
+                    <p><strong>Benefício:</strong> Um sistema comprovado para garantir que você execute o plano e veja resultados, mesmo com tempo limitado.</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">🤝</div>
+                    <div class="bonus-value">R$ 2.000</div>
+                    <h3>BÔNUS #8: PACK DE PARCERIAS E INDICAÇÕES</h3>
+                    <p><strong>Benefício:</strong> Scripts e funis para fechar 3-5 reuniões extras por semana através de collabs e indicações estratégicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Garantias -->
+    <section id="garantias" class="garantias-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Risco ZERO Para Você</h2>
+                <p class="subtitle">A Prova Está Nas Nossas <strong>GARANTIAS Irrecusáveis</strong></p>
+                <p>Estamos tão certos do Vértice do Lucro que assumimos todo o risco. Você tem <strong>TRÊS NÍVEIS DE GARANTIA:</strong></p>
+            </div>
+            <div class="garantias-grid">
+                <div class="garantia-item">
+                    <div class="garantia-icon">💝</div>
+                    <div class="garantia-badge">7 DIAS</div>
+                    <h3>GARANTIA #1: "AMOR À PRIMEIRA VISTA"</h3>
+                    <h4>7 DIAS SEM PERGUNTAS</h4>
+                    <p>Se, por qualquer motivo, você não sentir que o Vértice do Lucro é para você nos primeiros 7 dias após o kickoff, devolvemos <strong>100% do seu investimento</strong>. Sem burocracia, sem perguntas.</p>
+                </div>
+                <div class="garantia-item">
+                    <div class="garantia-icon">🎯</div>
+                    <div class="garantia-badge">30 DIAS</div>
+                    <h3>GARANTIA #2: "10 REUNIÕES EM 30 DIAS"</h3>
+                    <h4>NÓS TRABALHAMOS DE GRAÇA</h4>
+                    <p>Se você seguir <strong>INTEGRALMENTE</strong> nosso playbook (participar de todas as reuniões, implementar scripts, usar o CRM e ativar as automações), e não conseguir agendar pelo menos 10 reuniões qualificadas em 30 dias, nós trabalharemos <strong>GRATUITAMENTE</strong> com você até você atingir essa meta.</p>
+                </div>
+                <div class="garantia-item">
+                    <div class="garantia-icon">💰</div>
+                    <div class="garantia-badge">90 DIAS</div>
+                    <h3>GARANTIA #3: "2X ROI EM 90 DIAS"</h3>
+                    <h4>SEU INVESTIMENTO PROTEGIDO</h4>
+                    <p>Se, após 90 dias, você seguir <strong>TODOS os passos</strong> do programa e não gerar um mínimo de 2x o valor do seu investimento em novas vendas, nós estenderemos nosso suporte e trabalharemos com você <strong>GRATUITAMENTE</strong> por mais 90 dias OU devolveremos a diferença do seu investimento.</p>
+                </div>
+            </div>
+            <div class="garantia-footer">
+                <p><strong>Ninguém mais oferece isso porque ninguém mais garante resultados como nós.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Investimento -->
+    <section id="investimento" class="investimento-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Qual é o Investimento Para Ter um Sistema de Vendas Previsível e Lucrativo?</h2>
+                <p>Se você fosse construir tudo isso do zero...</p>
+            </div>
+            <div class="valor-comparativo">
+                <div class="valor-item">
+                    <span class="servico">Contratar um especialista em funis:</span>
+                    <span class="preco">R$ 5.000 - R$ 10.000/mês</span>
+                </div>
+                <div class="valor-item">
+                    <span class="servico">Contratar um especialista em CRM e automação:</span>
+                    <span class="preco">R$ 3.000 - R$ 6.000/mês</span>
+                </div>
+                <div class="valor-item">
+                    <span class="servico">Treinamento em vendas e prospecção:</span>
+                    <span class="preco">R$ 2.000 - R$ 5.000</span>
+                </div>
+                <div class="valor-item">
+                    <span class="servico">Desenvolvimento de ofertas e copy:</span>
+                    <span class="preco">R$ 2.000 - R$ 4.000</span>
+                </div>
+                <div class="valor-item">
+                    <span class="servico">Bônus adicionais:</span>
+                    <span class="preco">Mais de R$ 19.500</span>
+                </div>
+                <div class="valor-total">
+                    <span class="servico">O valor real deste sistema:</span>
+                    <span class="preco-total">R$ 28.000+</span>
+                </div>
+            </div>
+            <div class="investimento-real">
+                <h3>Mas você não vai investir isso.</h3>
+                <p>Hoje, você pode ter o Sistema Vértice do Lucro completo, com todos os bônus e garantias, por um investimento acessível que se paga em suas primeiras vendas:</p>
+                <div class="preco-final">
+                    <div class="preco-destaque">
+                        <span class="label">INVESTIMENTO:</span>
+                        <span class="valor">A Partir de R$ 6.000</span>
+                        <span class="parcelamento">(ou 12x de R$ 597 com entrada)</span>
+                    </div>
+                </div>
+                <p class="economia">Isso é menos do que você perde em vendas não realizadas em apenas um mês sem um sistema.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Escassez -->
+    <section id="escassez" class="escassez-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Acelere Seus Resultados</h2>
+                <p class="subtitle"><strong>Vagas Estritamente Limitadas</strong></p>
+            </div>
+            <div class="escassez-content">
+                <p>Para garantir a qualidade, suporte individualizado e a implantação eficaz que você merece, aceitamos um máximo de <strong>10 novas implantações por mês</strong>.</p>
+                <p>As vagas para a próxima janela de onboarding estão se esgotando rapidamente.</p>
+                <div class="bonus-urgencia">
+                    <div class="urgencia-icon">🔥</div>
+                    <h3>BÔNUS EXCLUSIVO DE AÇÃO RÁPIDA</h3>
+                    <p>Apenas para os próximos inscritos nesta janela: você garante o <strong>BÔNUS #6: TRÁFEGO DE BAIXO ORÇAMENTO (R$20/DIA)</strong>, para começar a gerar leads pagos imediatamente e com segurança.</p>
+                </div>
+                <p class="urgencia-final"><strong>Não perca a chance de transformar sua mentoria.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final Section -->
+    <section class="cta-final" id="aplicacao">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Sua Expertise Merece Ser Lucrativa e Previsível</h2>
+                <h3>Chegou a Hora de Agir</h3>
+                <p>Se você está pronto para parar de adivinhar, eliminar a imprevisibilidade e finalmente ter um sistema de vendas que funciona para sua mentoria, o "Vértice do Lucro" é a sua solução.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-button primary">SIM, QUERO IMPLANTAR MEU SISTEMA "VÉRTICE DO LUCRO"!</a>
+                    <a href="#" class="cta-button secondary">CONVERSAR COM UM ESPECIALISTA</a>
+                </div>
+                <p class="cta-subtitle">AINDA EM DÚVIDA? Agende uma conversa rápida com um de nossos especialistas para tirar suas dúvidas e ver se o Vértice do Lucro é o encaixe perfeito para você.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Vértice do Lucro</h3>
+                    <p>Transformando experts em máquinas de vendas previsíveis.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#hero">Início</a></li>
+                        <li><a href="#problema">Problema</a></li>
+                        <li><a href="#solucao">Solução</a></li>
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> contato@verticedolucro.com</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vértice do Lucro. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-vertice.js"></script>
+</body>
+</html>
