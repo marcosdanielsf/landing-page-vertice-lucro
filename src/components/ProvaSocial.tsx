@@ -1,7 +1,28 @@
-import React from 'react';
+'use client'
 
-const ProvaSocial = () => {
-  const depoimentos = [
+import React from 'react'
+
+interface Depoimento {
+  nome: string
+  empresa: string
+  resultado: string
+  tempo: string
+  depoimento: string
+  foto: string
+}
+
+interface VideoDepoimento {
+  nome: string
+  titulo: string
+}
+
+interface Estatistica {
+  valor: string
+  label: string
+}
+
+const ProvaSocial: React.FC = () => {
+  const depoimentos: Depoimento[] = [
     {
       nome: "Carlos Mendes",
       empresa: "Financial Consulting",
@@ -50,7 +71,26 @@ const ProvaSocial = () => {
       depoimento: "What surprised me most was how the system adapts to my niche. It's not a generic formula, it's personalized for my business. The results speak for themselves.",
       foto: "https://ui-avatars.com/api/?name=Juliana+Ferreira&background=6366f1&color=fff&size=150"
     }
-  ];
+  ]
+
+  const estatisticas: Estatistica[] = [
+    { valor: "500+", label: "Clients Served" },
+    { valor: "$10M+", label: "Generated in Sales" },
+    { valor: "4.2x", label: "Average Increase" },
+    { valor: "90%", label: "Success Rate" }
+  ]
+
+  const videosDepoimentos: VideoDepoimento[] = [
+    { nome: "Carlos Mendes", titulo: "How I went from $3K to $17K/month" },
+    { nome: "Ana Paula Silva", titulo: "Multiplying by 5 in just 3 months" },
+    { nome: "Roberto Oliveira", titulo: "From $5K to $24K/month" }
+  ]
+
+  const garantias = [
+    { tempo: "7 days", tipo: "Unconditional Guarantee" },
+    { tempo: "30 days", tipo: "Satisfaction Guarantee" },
+    { tempo: "90 days", tipo: "Results Guarantee" }
+  ]
 
   return (
     <section id="prova-social" className="py-20 bg-white">
@@ -67,22 +107,12 @@ const ProvaSocial = () => {
 
         {/* Estatísticas Gerais */}
         <div className="grid md:grid-cols-4 gap-8 mb-16">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-vertex-gold mb-2">500+</div>
-            <div className="text-gray-600">Clients Served</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-vertex-gold mb-2">$10M+</div>
-            <div className="text-gray-600">Generated in Sales</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-vertex-gold mb-2">4.2x</div>
-            <div className="text-gray-600">Average Increase</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-vertex-gold mb-2">90%</div>
-            <div className="text-gray-600">Success Rate</div>
-          </div>
+          {estatisticas.map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className="text-4xl font-bold text-vertex-gold mb-2">{stat.valor}</div>
+              <div className="text-gray-600">{stat.label}</div>
+            </div>
+          ))}
         </div>
 
         {/* Depoimentos */}
@@ -127,29 +157,15 @@ const ProvaSocial = () => {
             See Results in Video
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="video-depoimento bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
-                <i className="fas fa-play-circle text-4xl text-vertex-gold"></i>
+            {videosDepoimentos.map((video, index) => (
+              <div key={index} className="video-depoimento bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                <div className="aspect-video bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
+                  <i className="fas fa-play-circle text-4xl text-vertex-gold"></i>
+                </div>
+                <h4 className="font-bold text-vertex-dark mb-2">{video.nome}</h4>
+                <p className="text-sm text-gray-600">{video.titulo}</p>
               </div>
-              <h4 className="font-bold text-vertex-dark mb-2">Carlos Mendes</h4>
-              <p className="text-sm text-gray-600">How I went from $3K to $17K/month</p>
-            </div>
-
-            <div className="video-depoimento bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
-                <i className="fas fa-play-circle text-4xl text-vertex-gold"></i>
-              </div>
-              <h4 className="font-bold text-vertex-dark mb-2">Ana Paula Silva</h4>
-              <p className="text-sm text-gray-600">Multiplying by 5 in just 3 months</p>
-            </div>
-
-            <div className="video-depoimento bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
-                <i className="fas fa-play-circle text-4xl text-vertex-gold"></i>
-              </div>
-              <h4 className="font-bold text-vertex-dark mb-2">Roberto Oliveira</h4>
-              <p className="text-sm text-gray-600">From $5K to $24K/month</p>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -167,24 +183,18 @@ const ProvaSocial = () => {
               If you don't get results, we'll refund 100% of your investment.
             </p>
             <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="text-center">
-                <div className="text-vertex-gold text-2xl mb-2">7 days</div>
-                <div className="text-sm">Unconditional Guarantee</div>
-              </div>
-              <div className="text-center">
-                <div className="text-vertex-gold text-2xl mb-2">30 days</div>
-                <div className="text-sm">Satisfaction Guarantee</div>
-              </div>
-              <div className="text-center">
-                <div className="text-vertex-gold text-2xl mb-2">90 days</div>
-                <div className="text-sm">Results Guarantee</div>
-              </div>
+              {garantias.map((garantia, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-vertex-gold text-2xl mb-2">{garantia.tempo}</div>
+                  <div className="text-sm">{garantia.tipo}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ProvaSocial;
+export default ProvaSocial

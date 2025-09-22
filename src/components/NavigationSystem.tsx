@@ -1,16 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const NavigationSystem = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [recentSearches, setRecentSearches] = useState([]);
-  const [showTooltip, setShowTooltip] = useState(null);
-  const [currentSection, setCurrentSection] = useState('home');
-  const searchRef = useRef(null);
-  const tooltipTimeoutRef = useRef(null);
+interface BreadcrumbItem {
+  label: string;
+  path: string;
+}
+
+interface SearchItem {
+  title: string;
+  description: string;
+  path: string;
+  keywords: string[];
+}
+
+interface TooltipData {
+  search: string;
+  breadcrumb: string;
+  help: string;
+}
+
+type SectionType = 'home' | 'about' | 'features' | 'services' | 'testimonials' | 'contact';
+type TooltipKey = 'search' | 'breadcrumb' | 'help';
+
+const NavigationSystem: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchResults, setSearchResults] = useState<SearchItem[]>([]);
+  const [recentSearches, setRecentSearches] = useState<SearchItem[]>([]);
+  const [showTooltip, setShowTooltip] = useState<TooltipKey | null>(null);
+  const [currentSection, setCurrentSection] = useState<SectionType>('home');
+  const searchRef = useRef<HTMLInputElement>(null);
+  const tooltipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Breadcrumb navigation data
-  const breadcrumbMap = {
+  const breadcrumbMap: Record<SectionType, BreadcrumbItem[]> = {
     home: [{ label: 'Início', path: '#hero' }],
     about: [
       { label: 'Início', path: '#hero' },
@@ -35,7 +56,7 @@ const NavigationSystem = () => {
   };
 
   // Search data for intelligent search
-  const searchData = [
+  const searchData: SearchItem[] = [
     { title: 'Página Inicial', description: 'Conheça nossa proposta de valor', path: '#hero', keywords: ['início', 'home', 'principal'] },
     { title: 'Sobre Nós', description: 'Nossa história e missão', path: '#about', keywords: ['sobre', 'empresa', 'história', 'missão'] },
     { title: 'Funcionalidades', description: 'Recursos e benefícios', path: '#features', keywords: ['recursos', 'benefícios', 'funcionalidades'] },
@@ -45,7 +66,7 @@ const NavigationSystem = () => {
   ];
 
   // Tooltip data
-  const tooltipData = {
+  const tooltipData: TooltipData = {
     search: 'Pesquise por qualquer seção ou conteúdo do site',
     breadcrumb: 'Navegue facilmente entre as seções',
     help: 'Precisa de ajuda? Clique aqui para dicas de navegação'
@@ -66,7 +87,7 @@ const NavigationSystem = () => {
   }, [searchQuery]);
 
   // Handle search selection
-  const handleSearchSelect = (item) => {
+  const handleSearchSelect = (item: SearchItem): void => {
     setSearchQuery('');
     setSearchResults([]);
     
@@ -83,12 +104,16 @@ const NavigationSystem = () => {
   useEffect(() => {
     const saved = localStorage.getItem('recentSearches');
     if (saved) {
-      setRecentSearches(JSON.parse(saved));
+      try {
+        setRecentSearches(JSON.parse(saved));
+      } catch (error) {
+        console.error('Error parsing recent searches:', error);
+      }
     }
   }, []);
 
   // Handle tooltip display
-  const handleTooltipShow = (tooltipKey) => {
+  const handleTooltipShow = (tooltipKey: TooltipKey): void => {
     if (tooltipTimeoutRef.current) {
       clearTimeout(tooltipTimeoutRef.current);
     }
@@ -98,7 +123,7 @@ const NavigationSystem = () => {
     }, 300);
   };
 
-  const handleTooltipHide = () => {
+  const handleTooltipHide = (): void => {
     if (tooltipTimeoutRef.current) {
       clearTimeout(tooltipTimeoutRef.current);
     }
@@ -107,8 +132,8 @@ const NavigationSystem = () => {
 
   // Detect current section for breadcrumbs
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['hero', 'about', 'features', 'services', 'testimonials', 'contact'];
+    const handleScroll = (): void => {
+      const sections: string[] = ['hero', 'about', 'features', 'services', 'testimonials', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -116,7 +141,7 @@ const NavigationSystem = () => {
         if (element) {
           const { offsetTop, offsetHeight } = element;
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setCurrentSection(section === 'hero' ? 'home' : section);
+            setCurrentSection(section === 'hero' ? 'home' : section as SectionType);
             break;
           }
         }

@@ -1,7 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
-const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  nomeCompleto: string;
+  email: string;
+  whatsapp: string;
+  nicho: string;
+  faturamento: string;
+  desafios: string[];
+  resultadoFinanceiro: string;
+  orcamento: string;
+  tempoDisponivel: string;
+  expectativa: string;
+}
+
+interface PopupFormularioProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmitSuccess?: () => void;
+}
+
+interface RadioOption {
+  value: string;
+  label: string;
+}
+
+const PopupFormulario: React.FC<PopupFormularioProps> = ({ isOpen, onClose, onSubmitSuccess }) => {
+  const [formData, setFormData] = useState<FormData>({
     nomeCompleto: '',
     email: '',
     whatsapp: '',
@@ -16,7 +40,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
 
   // Fechar popup com tecla ESC
   useEffect(() => {
-    const handleEscKey = (event) => {
+    const handleEscKey = (event: KeyboardEvent): void => {
       if (event.key === 'Escape') {
         onClose();
       }
@@ -34,8 +58,9 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
     };
   }, [isOpen, onClose]);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
     
     if (type === 'checkbox' && name === 'desafios') {
       setFormData(prev => ({
@@ -52,7 +77,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     console.log('Formulário enviado:', formData);
     
@@ -68,9 +93,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
     }, 500); // Pequeno delay para simular processamento
   };
 
-  if (!isOpen) return null;
-
-  const desafiosOptions = [
+  const desafiosOptions: string[] = [
     'Falta de um funil de vendas claro',
     'Vendas imprevisíveis, sem constância',
     'Dificuldade em gerar leads qualificados no Instagram/WhatsApp',
@@ -79,6 +102,26 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
     'Pouco tempo para dedicar às vendas/prospecção',
     'Medo de investir em tráfego pago',
     'Não saber como criar uma oferta irresistível'
+  ];
+
+  const faturamentoOptions: RadioOption[] = [
+    { value: 'abaixo-5k', label: 'Abaixo de $ 5.000' },
+    { value: '5k-10k', label: '$ 5.000 - $ 10.000' },
+    { value: '10k-20k', label: '$ 10.000 - $ 20.000' },
+    { value: 'acima-20k', label: 'Acima de $ 20.000' },
+    { value: 'sem-previsibilidade', label: 'Sem faturamento previsível' }
+  ];
+
+  const orcamentoOptions: RadioOption[] = [
+    { value: 'sim-pronto', label: 'Sim, estou pronto para investir no meu crescimento.' },
+    { value: 'sim-avaliando', label: 'Sim, estou buscando uma solução e avaliando opções.' },
+    { value: 'nao-limitado', label: 'Não, meu orçamento é muito limitado no momento.' }
+  ];
+
+  const tempoOptions: RadioOption[] = [
+    { value: 'menos-5h', label: 'Menos de 5 horas' },
+    { value: '5-10h', label: '5-10 horas' },
+    { value: 'mais-10h', label: 'Mais de 10 horas' }
   ];
 
   if (!isOpen) return null;
@@ -180,13 +223,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
                 5. Qual seu faturamento médio MENSAL hoje com sua mentoria? <span className="required">*</span>
               </label>
               <div className="radio-group">
-                {[
-                  { value: 'abaixo-5k', label: 'Abaixo de $ 5.000' },
-                  { value: '5k-10k', label: '$ 5.000 - $ 10.000' },
-                  { value: '10k-20k', label: '$ 10.000 - $ 20.000' },
-                  { value: 'acima-20k', label: 'Acima de $ 20.000' },
-                  { value: 'sem-previsibilidade', label: 'Sem faturamento previsível' }
-                ].map((option) => (
+                {faturamentoOptions.map((option) => (
                   <label key={option.value} className="radio-option">
                     <input
                       type="radio"
@@ -242,7 +279,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
                       name="outroDesafio"
                       className="form-textarea"
                       placeholder="Especifique seu desafio..."
-                      rows="2"
+                      rows={2}
                     />
                   )}
                 </div>
@@ -261,7 +298,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
                 onChange={handleChange}
                 required
                 className="form-textarea"
-                rows="3"
+                rows={3}
                 placeholder="Descreva seus objetivos financeiros para os próximos 90 dias..."
               />
             </div>
@@ -272,11 +309,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
                 8. Você tem orçamento para investir em um sistema de vendas que garanta 10-30 novas vendas e 10+ reuniões mensais em 90 dias? <span className="required">*</span>
               </label>
               <div className="radio-group">
-                {[
-                  { value: 'sim-pronto', label: 'Sim, estou pronto para investir no meu crescimento.' },
-                  { value: 'sim-avaliando', label: 'Sim, estou buscando uma solução e avaliando opções.' },
-                  { value: 'nao-limitado', label: 'Não, meu orçamento é muito limitado no momento.' }
-                ].map((option) => (
+                {orcamentoOptions.map((option) => (
                   <label key={option.value} className="radio-option">
                     <input
                       type="radio"
@@ -299,11 +332,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
                 9. Quanto tempo por semana você pode dedicar à implementação de um novo sistema de vendas? <span className="required">*</span>
               </label>
               <div className="radio-group">
-                {[
-                  { value: 'menos-5h', label: 'Menos de 5 horas' },
-                  { value: '5-10h', label: '5-10 horas' },
-                  { value: 'mais-10h', label: 'Mais de 10 horas' }
-                ].map((option) => (
+                {tempoOptions.map((option) => (
                   <label key={option.value} className="radio-option">
                     <input
                       type="radio"
@@ -331,7 +360,7 @@ const PopupFormulario = ({ isOpen, onClose, onSubmitSuccess }) => {
                 onChange={handleChange}
                 required
                 className="form-textarea"
-                rows="3"
+                rows={3}
                 placeholder="Descreva suas expectativas para a análise de oportunidade..."
               />
             </div>

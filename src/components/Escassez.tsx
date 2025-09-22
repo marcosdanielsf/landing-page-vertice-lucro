@@ -1,14 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
-const Escassez = ({ onOpenPopup }) => {
-  const [timeLeft, setTimeLeft] = useState({
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+interface BonusUrgencia {
+  titulo: string;
+  nome: string;
+  valor: string;
+  descricao: string;
+  condicao: string;
+}
+
+interface EscassezProps {
+  onOpenPopup: () => void;
+}
+
+const Escassez: React.FC<EscassezProps> = ({ onOpenPopup }) => {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 2,
     hours: 14,
     minutes: 32,
     seconds: 45
   });
 
-  const [vagasRestantes, setVagasRestantes] = useState(23);
+  const [vagasRestantes, setVagasRestantes] = useState<number>(23);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,7 +57,7 @@ const Escassez = ({ onOpenPopup }) => {
     return () => clearInterval(timer);
   }, []);
 
-  const bonusUrgencia = [
+  const bonusUrgencia: BonusUrgencia[] = [
     {
       titulo: "BÔNUS AÇÃO RÁPIDA #1",
       nome: "Sessão de Estratégia Individual",
@@ -168,7 +187,7 @@ const Escassez = ({ onOpenPopup }) => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {bonusUrgencia.map((bonus, index) => (
+            {bonusUrgencia.map((bonus: BonusUrgencia, index: number) => (
               <div key={index} className="bg-white text-vertex-dark rounded-2xl p-8 shadow-xl">
                 <div className="text-center mb-6">
                   <div className="bg-red-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 font-bold text-xl">

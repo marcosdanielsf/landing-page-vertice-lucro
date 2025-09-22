@@ -1,9 +1,16 @@
 // Scripts originais da página index-vertice.html reintegrados
 
+interface CountdownElements {
+  days: HTMLElement | null;
+  hours: HTMLElement | null;
+  minutes: HTMLElement | null;
+  seconds: HTMLElement | null;
+}
+
 // Função para inicializar todos os scripts quando o DOM estiver carregado
-export const initializeVerticeScripts = () => {
+export const initializeVerticeScripts = (): void => {
   // Loading Screen
-  const initLoadingScreen = () => {
+  const initLoadingScreen = (): void => {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
       setTimeout(() => {
@@ -16,14 +23,13 @@ export const initializeVerticeScripts = () => {
   };
 
   // Header Scroll Effect
-  const initHeaderScrollEffect = () => {
-    const header = document.querySelector('header');
-    const progressBar = document.querySelector('.progress-bar');
+  const initHeaderScrollEffect = (): void => {
+    const header = document.querySelector('header') as HTMLElement;
+    const progressBar = document.querySelector('.progress-bar') as HTMLElement;
     
     if (header && progressBar) {
       window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
         
         if (scrolled > 100) {
           header.classList.add('scrolled');
@@ -43,11 +49,12 @@ export const initializeVerticeScripts = () => {
   };
 
   // Smooth Scroll for Navigation Links
-  const initSmoothScroll = () => {
+  const initSmoothScroll = (): void => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', (e: Event) => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const anchorElement = e.currentTarget as HTMLAnchorElement;
+        const target = document.querySelector(anchorElement.getAttribute('href') || '');
         if (target) {
           target.scrollIntoView({
             behavior: 'smooth',
@@ -59,9 +66,9 @@ export const initializeVerticeScripts = () => {
   };
 
   // Mobile Menu Toggle
-  const initMobileMenu = () => {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileMenu = document.querySelector('.mobile-menu');
+  const initMobileMenu = (): void => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn') as HTMLElement;
+    const mobileMenu = document.querySelector('.mobile-menu') as HTMLElement;
     
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener('click', () => {
@@ -80,13 +87,13 @@ export const initializeVerticeScripts = () => {
   };
 
   // Intersection Observer for Animations
-  const initIntersectionObserver = () => {
-    const observerOptions = {
+  const initIntersectionObserver = (): void => {
+    const observerOptions: IntersectionObserverInit = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
@@ -94,7 +101,7 @@ export const initializeVerticeScripts = () => {
           // Trigger counter animation if element has counters
           const counters = entry.target.querySelectorAll('.counter');
           counters.forEach(counter => {
-            animateCounter(counter);
+            animateCounter(counter as HTMLElement);
           });
         }
       });
@@ -107,19 +114,19 @@ export const initializeVerticeScripts = () => {
   };
 
   // Counter Animation
-  const animateCounter = (counter) => {
-    const target = parseInt(counter.getAttribute('data-target'));
+  const animateCounter = (counter: HTMLElement): void => {
+    const target = parseInt(counter.getAttribute('data-target') || '0');
     const duration = 2000;
     const step = target / (duration / 16);
     let current = 0;
 
-    const updateCounter = () => {
+    const updateCounter = (): void => {
       current += step;
       if (current < target) {
-        counter.textContent = Math.floor(current);
+        counter.textContent = Math.floor(current).toString();
         requestAnimationFrame(updateCounter);
       } else {
-        counter.textContent = target;
+        counter.textContent = target.toString();
       }
     };
 
@@ -127,8 +134,8 @@ export const initializeVerticeScripts = () => {
   };
 
   // Countdown Timer
-  const initCountdownTimer = () => {
-    const countdownElements = {
+  const initCountdownTimer = (): void => {
+    const countdownElements: CountdownElements = {
       days: document.querySelector('.countdown-days'),
       hours: document.querySelector('.countdown-hours'),
       minutes: document.querySelector('.countdown-minutes'),
@@ -136,7 +143,7 @@ export const initializeVerticeScripts = () => {
     };
 
     if (Object.values(countdownElements).some(el => el)) {
-      const updateCountdown = () => {
+      const updateCountdown = (): void => {
         const now = new Date().getTime();
         const targetDate = now + (2 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000) + (32 * 60 * 1000) + (45 * 1000);
         const distance = targetDate - now;
@@ -160,8 +167,8 @@ export const initializeVerticeScripts = () => {
   };
 
   // Floating Elements Animation
-  const initFloatingElements = () => {
-    const floatingElements = document.querySelectorAll('.floating-element');
+  const initFloatingElements = (): void => {
+    const floatingElements = document.querySelectorAll('.floating-element') as NodeListOf<HTMLElement>;
     
     floatingElements.forEach((element, index) => {
       const delay = index * 0.5;
@@ -173,13 +180,13 @@ export const initializeVerticeScripts = () => {
   };
 
   // Parallax Effect
-  const initParallaxEffect = () => {
+  const initParallaxEffect = (): void => {
     window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
-      const parallaxElements = document.querySelectorAll('.parallax-element');
+      const parallaxElements = document.querySelectorAll('.parallax-element') as NodeListOf<HTMLElement>;
       
       parallaxElements.forEach(element => {
-        const speed = element.dataset.speed || 0.5;
+        const speed = parseFloat(element.dataset.speed || '0.5');
         const yPos = -(scrolled * speed);
         element.style.transform = `translateY(${yPos}px)`;
       });
@@ -187,15 +194,15 @@ export const initializeVerticeScripts = () => {
   };
 
   // Form Validation and Submission
-  const initFormHandling = () => {
+  const initFormHandling = (): void => {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', (e: Event) => {
         e.preventDefault();
         
         // Basic validation
-        const inputs = form.querySelectorAll('input[required], textarea[required]');
+        const inputs = form.querySelectorAll('input[required], textarea[required]') as NodeListOf<HTMLInputElement | HTMLTextAreaElement>;
         let isValid = true;
         
         inputs.forEach(input => {
@@ -208,7 +215,7 @@ export const initializeVerticeScripts = () => {
         });
         
         // Email validation
-        const emailInputs = form.querySelectorAll('input[type="email"]');
+        const emailInputs = form.querySelectorAll('input[type="email"]') as NodeListOf<HTMLInputElement>;
         emailInputs.forEach(input => {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (input.value && !emailRegex.test(input.value)) {
@@ -219,8 +226,8 @@ export const initializeVerticeScripts = () => {
         
         if (isValid) {
           // Simulate form submission
-          const submitBtn = form.querySelector('button[type="submit"]');
-          const originalText = submitBtn.textContent;
+          const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+          const originalText = submitBtn.textContent || '';
           
           submitBtn.textContent = 'Enviando...';
           submitBtn.disabled = true;
@@ -239,12 +246,12 @@ export const initializeVerticeScripts = () => {
   };
 
   // Video Player Controls
-  const initVideoControls = () => {
+  const initVideoControls = (): void => {
     const videoContainers = document.querySelectorAll('.video-container');
     
     videoContainers.forEach(container => {
-      const video = container.querySelector('video');
-      const playBtn = container.querySelector('.play-btn');
+      const video = container.querySelector('video') as HTMLVideoElement;
+      const playBtn = container.querySelector('.play-btn') as HTMLElement;
       
       if (video && playBtn) {
         playBtn.addEventListener('click', () => {
@@ -275,14 +282,14 @@ export const initializeVerticeScripts = () => {
   };
 
   // Tooltip Initialization
-  const initTooltips = () => {
+  const initTooltips = (): void => {
     const tooltipElements = document.querySelectorAll('[data-tooltip]');
     
     tooltipElements.forEach(element => {
-      element.addEventListener('mouseenter', (e) => {
+      element.addEventListener('mouseenter', () => {
         const tooltip = document.createElement('div');
         tooltip.className = 'tooltip';
-        tooltip.textContent = element.getAttribute('data-tooltip');
+        tooltip.textContent = element.getAttribute('data-tooltip') || '';
         document.body.appendChild(tooltip);
         
         const rect = element.getBoundingClientRect();

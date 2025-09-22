@@ -1,7 +1,16 @@
 import React from 'react';
 
-const BonusExclusivos = () => {
-  const bonus = [
+interface BonusItem {
+  numero: number;
+  titulo: string;
+  valor: string;
+  descricao: string;
+  itens: string[];
+  icone: string;
+}
+
+const BonusExclusivos: React.FC = () => {
+  const bonus: BonusItem[] = [
     {
       numero: 1,
       titulo: "O ACELERADOR '10 REUNIÕES EM 10 DIAS'",
@@ -116,7 +125,7 @@ const BonusExclusivos = () => {
     }
   ];
 
-  const valorTotal = bonus.reduce((total, item) => {
+  const valorTotal: number = bonus.reduce((total: number, item: BonusItem) => {
     const valor = parseFloat(item.valor.replace('R$ ', '').replace('.', '').replace('/mês', ''));
     return total + valor;
   }, 0);
@@ -135,7 +144,7 @@ const BonusExclusivos = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {bonus.map((item, index) => (
+          {bonus.map((item: BonusItem, index: number) => (
             <div key={index} className="bonus-card bg-white text-vertex-dark rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow">
               <div className="flex items-start mb-6">
                 <div className="bg-vertex-gold text-vertex-dark rounded-full w-16 h-16 flex items-center justify-center font-bold text-xl mr-6 flex-shrink-0">
@@ -163,7 +172,7 @@ const BonusExclusivos = () => {
               <div className="space-y-3">
                 <h4 className="font-bold text-vertex-dark">O que você recebe:</h4>
                 <ul className="space-y-2">
-                  {item.itens.map((subitem, subindex) => (
+                  {item.itens.map((subitem: string, subindex: number) => (
                     <li key={subindex} className="flex items-start">
                       <i className="fas fa-check text-vertex-gold mr-3 mt-1 flex-shrink-0"></i>
                       <span className="text-gray-600">{subitem}</span>

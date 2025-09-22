@@ -1,7 +1,16 @@
 import React from 'react';
 
-const Garantias = () => {
-  const garantias = [
+interface GarantiaItem {
+  periodo: string;
+  tipo: string;
+  descricao: string;
+  detalhes: string[];
+  icone: string;
+  cor: string;
+}
+
+const Garantias: React.FC = () => {
+  const garantias: GarantiaItem[] = [
     {
       periodo: "7 DIAS",
       tipo: "Garantia Incondicional",
@@ -60,7 +69,7 @@ const Garantias = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {garantias.map((garantia, index) => (
+          {garantias.map((garantia: GarantiaItem, index: number) => (
             <div key={index} className="garantia-card bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow border-t-4 border-vertex-gold">
               <div className="text-center mb-8">
                 <div className={`${garantia.cor} text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4`}>
@@ -81,7 +90,7 @@ const Garantias = () => {
               <div className="space-y-4">
                 <h4 className="font-bold text-vertex-dark text-center">O que está incluído:</h4>
                 <ul className="space-y-3">
-                  {garantia.detalhes.map((detalhe, detailIndex) => (
+                  {garantia.detalhes.map((detalhe: string, detailIndex: number) => (
                     <li key={detailIndex} className="flex items-start">
                       <i className="fas fa-shield-alt text-vertex-gold mr-3 mt-1 flex-shrink-0"></i>
                       <span className="text-gray-600">{detalhe}</span>

@@ -1,7 +1,19 @@
 import React from 'react';
 
-const Investimento = ({ onOpenPopup }) => {
-  const comparacoes = [
+interface ComparacaoItem {
+  servico: string;
+  valor: string;
+  duracao: string;
+  total: string;
+  limitacoes: string;
+}
+
+interface InvestimentoProps {
+  onOpenPopup: () => void;
+}
+
+const Investimento: React.FC<InvestimentoProps> = ({ onOpenPopup }) => {
+  const comparacoes: ComparacaoItem[] = [
     {
       servico: "Consultoria Empresarial Individual",
       valor: "$3,000/mês",

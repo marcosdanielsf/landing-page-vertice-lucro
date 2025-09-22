@@ -1,6 +1,10 @@
 import React from 'react';
 
-const PaginaConfirmacao = ({ onVoltar }) => {
+interface PaginaConfirmacaoProps {
+  onVoltar: () => void;
+}
+
+const PaginaConfirmacao: React.FC<PaginaConfirmacaoProps> = ({ onVoltar }) => {
   return (
     <div className="confirmacao-container">
       {/* Header da Confirmação */}
